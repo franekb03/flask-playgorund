@@ -1,0 +1,4 @@
+[project]
+name = "flask-playground"
+version = "0.1.0"
+dependencies = ["flask", "numpy", "python-dotenv"]
