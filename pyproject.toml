@@ -1,4 +1,16 @@
 [project]
 name = "flask-playground"
 version = "0.1.0"
-dependencies = ["flask", "numpy", "python-dotenv", "flask-wtf", "flask-sqlalchemy", "flask-migrate"]
+dependencies = [
+    "flask",
+    "numpy",
+    "python-dotenv",
+    "flask-wtf",
+    "flask-sqlalchemy",
+    "flask-migrate",
+    "flask-login",
+    'email-validator'
+]
+
+[tool.setuptools]
+packages = ["app"]
