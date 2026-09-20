@@ -10,7 +10,8 @@ dependencies = [
     "flask-migrate",
     "flask-login",
     'email-validator',
-    'aiosmtpd'
+    'aiosmtpd',
+    'flask-moment'
 ]
 
 [tool.setuptools]
