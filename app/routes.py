@@ -1,9 +1,9 @@
 from datetime import datetime, timezone
 
 import sqlalchemy as sa
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, g
 from flask_login import current_user, login_user, logout_user, login_required
-from app import app, db
+from app import app, db, get_locale
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm
 from app.models import User, Post
 from urllib.parse import urlsplit
@@ -13,6 +13,7 @@ def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.now(timezone.utc)
         db.session.commit()
+        g.locale = str(get_locale())
 
 @app.route('/user/<username>')
 @login_required

@@ -11,7 +11,8 @@ dependencies = [
     "flask-login",
     'email-validator',
     'aiosmtpd',
-    'flask-moment'
+    'flask-moment',
+    'flask-babel'
 ]
 
 [tool.setuptools]
