@@ -10,8 +10,7 @@ from flask_login import LoginManager
 from config import Config
 
 def get_locale():
-    return 'de'
-    # return request.accept_languages.best_match(app.config['LANGUAGES'])
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)

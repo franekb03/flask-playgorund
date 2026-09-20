@@ -3,9 +3,12 @@ from datetime import datetime, timezone
 import sqlalchemy as sa
 from flask import render_template, flash, redirect, url_for, request, g
 from flask_login import current_user, login_user, logout_user, login_required
+from langdetect import detect, LangDetectException
+
 from app import app, db, get_locale
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm
 from app.models import User, Post
+from app.translate import translate
 from urllib.parse import urlsplit
 
 @app.before_request
@@ -33,7 +36,11 @@ def user(username):
 def index():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user)
+        try:
+            language = detect(form.post.data)
+        except LangDetectException:
+            language = ''
+        post = Post(body=form.post.data, author=current_user, language=language)
         db.session.add(post)
         db.session.commit()
         flash("Your post has been created!")
@@ -145,3 +152,9 @@ def explore():
     next_url = url_for('explore', page=posts.next_num) if posts.has_next else None
     prev_url = url_for('explore', page=posts.prev_num) if posts.has_prev else None
     return render_template('index.html', title="Explore", posts=posts.items, next_url=next_url, prev_url=prev_url)
+
+@app.route('/translate', methods=['POST'])
+@login_required
+def translate_text():
+    data = request.get_json()
+    return {'text': translate(data['text'], data['source_lang'], data['dest_lang'])}

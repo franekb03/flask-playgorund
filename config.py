@@ -14,3 +14,4 @@ class Config:
     ADMINS = ['your-email@example.com']
 
     LANGUAGES = ['en', 'de']
+    MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY')

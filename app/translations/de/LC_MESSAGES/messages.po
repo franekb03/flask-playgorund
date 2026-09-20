@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-09-20 18:45+0200\n"
+"POT-Creation-Date: 2026-09-20 19:57+0200\n"
 "PO-Revision-Date: 2026-09-20 18:19+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: de\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
+
+#: app/translate.py:9
+msgid "Error: the translation key is missing"
+msgstr "Fehler: Der Übersetzungsschlüssel fehlt"
+
+#: app/translate.py:19
+msgid "Error: the translation service failed."
+msgstr "Fehler: Der Übersetzungsdienst ist fehlgeschlagen."
 
 #: app/templates/404.html:4
 msgid "Not Found"
@@ -40,6 +48,10 @@ msgstr ""
 #, python-format
 msgid "%(username)s said %(when)s"
 msgstr "%(username)s schrieb %(when)s"
+
+#: app/templates/_post.html:25
+msgid "Translate"
+msgstr "Übersetzen"
 
 #: app/templates/base.html:9
 msgid "Welcome to Microblog"
